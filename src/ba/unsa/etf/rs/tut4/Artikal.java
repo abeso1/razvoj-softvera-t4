@@ -61,7 +61,7 @@ public class Artikal {
     public boolean equals(Object o) {
         if(!(o instanceof Artikal)) return false;
         Artikal artikal = (Artikal) o;
-        return (artikal.sifra == this.sifra && artikal.naziv == this.naziv && artikal.cijena == this.cijena);
+        return (artikal.sifra.equals(this.sifra) && artikal.naziv.equals(this.naziv) && artikal.cijena == this.cijena);
     }
 
     public static String toString(Artikal artikal) {

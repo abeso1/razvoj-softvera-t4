@@ -5,17 +5,34 @@ import java.util.ArrayList;
 public class Racun {
     private ArrayList<Artikal> artikli=new ArrayList<>();
     private ArrayList<Integer> kolicine=new ArrayList<>();
-
+    private Artikal artikal;
+    private Integer kolicina;
     public Racun(){}
 
     public void dodajStavku(Artikal artikal, int i) {
-        artikli.add(artikal);
-        kolicine.add(i);
+        setArtikal(artikal);
+        setKolicina(i);
     }
 
     public double ukupanIznos() {
         double suma=0;
         for(int i=0; i<artikli.size(); i++) suma+=artikli.get(i).getCijena()*kolicine.get(i);
         return suma;
+    }
+
+    public Artikal getArtikal() {
+        return artikal;
+    }
+
+    public void setArtikal(Artikal artikal) {
+        artikli.add(artikal);
+    }
+
+    public Integer getKolicina() {
+        return kolicina;
+    }
+
+    public void setKolicina(Integer kolicina) {
+        kolicine.add(kolicina);
     }
 }
