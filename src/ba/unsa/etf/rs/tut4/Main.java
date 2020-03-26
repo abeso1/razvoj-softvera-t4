@@ -12,8 +12,8 @@ public class Main extends Application {
     //--module-path "C:\Program Files\Java\javafx-sdk-13.0.2\lib" --add-modules javafx.controls,javafx.fxml
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/tutorijal3.fxml"));
+        primaryStage.setTitle("Kasa");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.show();
     }

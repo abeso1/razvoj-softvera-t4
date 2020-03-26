@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rs.tut4.Controller">
+  <tabs>
+    <Tab text="Artikli">
+    <content>
+      <GridPane hgap="10.0" vgap="20.0">
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+               <children>
+                  <TextArea fx:id="areaZaArtikle" prefHeight="200.0" prefWidth="200.0" />
+                  <TextArea fx:id="unEditAble" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#dodajArtikle" text="Dodaj artikle" GridPane.columnIndex="1" />
+               </children></GridPane>
+    </content>
+    </Tab>
+    <Tab text="Račun">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

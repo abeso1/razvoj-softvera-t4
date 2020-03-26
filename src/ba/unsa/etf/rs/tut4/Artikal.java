@@ -64,8 +64,7 @@ public class Artikal {
         return (artikal.sifra == this.sifra && artikal.naziv == this.naziv && artikal.cijena == this.cijena);
     }
 
-    @Override
-    public String toString() {
-        return sifra+", "+naziv+", "+cijena;
+    public static String toString(Artikal artikal) {
+        return artikal.sifra+", "+artikal.naziv+", "+artikal.cijena;
     }
 }
