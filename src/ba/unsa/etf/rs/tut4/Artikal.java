@@ -1,5 +1,8 @@
 package ba.unsa.etf.rs.tut4;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 public class Artikal {
     private String sifra;
     private String naziv;
@@ -10,6 +13,19 @@ public class Artikal {
         setSifra(art_sifra);
         setNaziv(art_naziv);
         setCijena(art_cijena);
+    }
+
+    public static void izbaciDuplikate(ArrayList<Artikal> lista) {
+        for(int i=0; i<lista.size()-1; i++){
+            Artikal a1= lista.get(i);
+            for(int j=i+1; j<lista.size(); j++){
+                Artikal a2= lista.get(j);
+                if(a1.equals(a2)) {
+                    lista.remove(j);
+                    j--;
+                }
+            }
+        }
     }
 
     public double getCijena() {
@@ -37,5 +53,19 @@ public class Artikal {
     public void setSifra(String sifra) {
         if(sifra.isEmpty()) throw new IllegalArgumentException("Šifra je prazna");
         this.sifra = sifra;
+    }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Artikal)) return false;
+        Artikal artikal = (Artikal) o;
+        return (artikal.sifra == this.sifra && artikal.naziv == this.naziv && artikal.cijena == this.cijena);
+    }
+
+    @Override
+    public String toString() {
+        return sifra+", "+naziv+", "+cijena;
     }
 }
