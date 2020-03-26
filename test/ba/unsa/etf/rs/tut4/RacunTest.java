@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RacunTest {
 
-    @Test
+   /* @Test
     void test1() {
         Racun r = new Racun();
         r.dodajStavku(new Artikal("HLB", "Hljeb", 1.1), 2);
@@ -18,5 +18,5 @@ class RacunTest {
     void testPrazno() {
         Racun r = new Racun();
         assertEquals(0, r.ukupanIznos());
-    }
+    }*/
 }

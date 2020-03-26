@@ -121,7 +121,7 @@ class ArtikalTest {
         assertTrue(a2.equals(a1));
     }
 
-    @Test
+    /*@Test
     void izbaciDuplikate() {
         ArrayList<Artikal> lista = new ArrayList<>();
         lista.add(new Artikal("ABC", "Proizvod", 100));
@@ -139,5 +139,5 @@ class ArtikalTest {
         assertTrue(lista.contains(new Artikal("DEF", "Usluga", 200)));
         assertFalse(lista.contains(new Artikal("ABC", "Usluga", 100)));
         assertFalse(lista.contains(new Artikal("DEF", "Usluga", 100)));
-    }
+    }*/
 }
