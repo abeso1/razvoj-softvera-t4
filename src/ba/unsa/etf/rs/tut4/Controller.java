@@ -17,8 +17,8 @@ public class Controller {
     public Tab artikalTab;
     public Button dodajBtn;
     private ArrayList<Artikal> lista = new ArrayList<>();
-    private static ArrayList<String> listaispisivanja = new ArrayList<>();
-    private static Double ukupno = Double.valueOf(0);
+    private  ArrayList<String> listaispisivanja = new ArrayList<>();
+    private  Double ukupno = Double.valueOf(0);
     Racun r = new Racun();
 
 

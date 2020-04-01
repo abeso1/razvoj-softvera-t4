@@ -160,5 +160,88 @@ class ControllerTest {
         assertEquals("ABC, Proizvod, 1.0\n", inArea2);
     }
 
+    @Test
+    void DvaArtiklaURacunuTest(FxRobot robot){
+        TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
+        TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
+        Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
+        robot.clickOn(area1);
+        robot.write("ABC,Proizvod,1\nDEF,Proizvod,2");
+        robot.clickOn(dodajArt);
+        String inArea = area2.getText();
+        assertEquals("ABC, Proizvod, 1.0\nDEF, Proizvod, 2.0\n", inArea);
+        robot.clickOn("#racunTab");
+        robot.clickOn("#choiceBocArtikli");
+        robot.type(KeyCode.ENTER);
+        robot.clickOn("#spinKol");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.type(KeyCode.DIGIT3);
+        robot.clickOn("#dodajBtn");
 
+        robot.clickOn("#choiceBocArtikli");
+        robot.type(KeyCode.DOWN).type(KeyCode.ENTER);
+        robot.clickOn("#spinKol");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.type(KeyCode.DIGIT4);
+        robot.clickOn("#dodajBtn");
+        TextArea area3 = robot.lookup("#aktuelniRacun").queryAs(TextArea.class);
+        String area3Str = area3.getText();
+        assertEquals("ABC             3     3.00\nDEF             4     8.00\nUKUPNO           11.00", area3Str );
+    }
+
+
+    @Test
+    void NakonRacunaNoviArtikli(FxRobot robot){
+        TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
+        TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
+        Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
+        robot.clickOn(area1);
+        robot.write("ABC,Proizvod,1\nDEF,Proizvod,2");
+        robot.clickOn(dodajArt);
+        String inArea = area2.getText();
+        assertEquals("ABC, Proizvod, 1.0\nDEF, Proizvod, 2.0\n", inArea);
+        robot.clickOn("#racunTab");
+        robot.clickOn("#choiceBocArtikli");
+        robot.type(KeyCode.ENTER);
+        robot.clickOn("#spinKol");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.type(KeyCode.DIGIT3);
+        robot.clickOn("#dodajBtn");
+
+        robot.clickOn("#choiceBocArtikli");
+        robot.type(KeyCode.DOWN).type(KeyCode.ENTER);
+        robot.clickOn("#spinKol");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.type(KeyCode.DIGIT4);
+        robot.clickOn("#dodajBtn");
+
+        robot.clickOn("#artikalTab");
+        robot.clickOn(area1);
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("GHP, Proizvod, 3");
+        robot.clickOn(dodajArt);
+        robot.clickOn("#racunTab");
+        robot.clickOn("#choiceBocArtikli");
+        robot.type(KeyCode.DOWN).type(KeyCode.DOWN).type(KeyCode.DOWN).type(KeyCode.ENTER);
+        robot.clickOn("#spinKol");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.type(KeyCode.DIGIT4);
+        robot.clickOn("#dodajBtn");
+        TextArea area3 = robot.lookup("#aktuelniRacun").queryAs(TextArea.class);
+        String area3Str = area3.getText();
+
+        assertEquals("ABC             3     3.00\nDEF             4     8.00\nGHP             4    12.00\nUKUPNO           23.00", area3Str );
+    }
+
+    @Test
+    void DvaArtiklaSveIstoOsimCijene(FxRobot robot){
+        TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
+        TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
+        Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
+        robot.clickOn(area1);
+        robot.write("ABC,Proizvod,1\nABC,Proizvod,2");
+        robot.clickOn(dodajArt);
+        String inArea = area2.getText();
+        assertEquals("ABC, Proizvod, 1.0\nABC, Proizvod, 2.0\n", inArea);
+    }
 }
