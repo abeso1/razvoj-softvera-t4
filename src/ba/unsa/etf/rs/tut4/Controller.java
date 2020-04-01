@@ -18,7 +18,9 @@ public class Controller {
     public Button dodajBtn;
     private ArrayList<Artikal> lista = new ArrayList<>();
     private static ArrayList<String> listaispisivanja = new ArrayList<>();
-    private static Double ukupno= Double.valueOf(0);
+    private static Double ukupno = Double.valueOf(0);
+    Racun r = new Racun();
+
 
     public void dodajArtikle(ActionEvent actionEvent) {
         String artikli = areaZaArtikle.getText();
@@ -49,22 +51,31 @@ public class Controller {
     }
 
     public void dodajUKorpu(ActionEvent actionEvent) {
+        Racun r = new Racun();
         int value = (Integer)spinKol.getValue();
+        if(value==0) return;
         String artikl= String.valueOf(choiceBocArtikli.getValue());
         Artikal praviatrikl= new Artikal();
         for(int i=0; i<lista.size(); i++){
             if(artikl.equals(lista.get(i).getSifra())){
+                r.dodajStavku(lista.get(i),value);
                 praviatrikl=lista.get(i);
             }
         }
-        ukupno+=praviatrikl.getCijena()*value;
-        listaispisivanja.add(String.format("%10s%7d%9.2f",artikl, value, praviatrikl.getCijena()*value));
+        ukupno+=r.ukupanIznos();
+        listaispisivanja.add(String.format("%-10s%7d%9.2f",artikl, value, praviatrikl.getCijena()*value));
         StringBuilder ispisivanje= new StringBuilder();
         for(int i=0; i<listaispisivanja.size(); i++){
             ispisivanje.append(listaispisivanja.get(i));
             ispisivanje.append("\n");
         }
-        ispisivanje.append(String.format("UKUPNO%17.2f", ukupno));
+        ispisivanje.append("UKUPNO");
+        if(lista.get(0).getSifra().length()!=1){
+            for(int i=1;i<=lista.get(0).getSifra().length();i++){
+                ispisivanje.append(" ");
+            }
+        }
+        ispisivanje.append(String.format("%13.2f", ukupno));
         aktuelniRacun.setText(ispisivanje.toString());
     }
 

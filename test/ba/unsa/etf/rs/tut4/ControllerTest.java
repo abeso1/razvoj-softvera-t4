@@ -32,7 +32,7 @@ class ControllerTest {
     }
 
     @Test
-    void TestArtikalTab(FxRobot robot){
+    void TestArtikalTabTest(FxRobot robot){
         Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
         TextArea textArea1 = robot.lookup("#unEditAble").queryAs(TextArea.class);
         TextArea textArea2 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
@@ -42,9 +42,9 @@ class ControllerTest {
     }
 
     @Test
-    void TestRacunTab(FxRobot robot){
+    void TestRacunTabTest(FxRobot robot){
         robot.clickOn("#racunTab");
-        Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
+        Button dodajArt = robot.lookup("#dodajBtn").queryAs(Button.class);
         TextArea artikli = robot.lookup("#aktuelniRacun").queryAs(TextArea.class);
         Spinner spin = robot.lookup("#spinKol").queryAs(Spinner.class);
         ChoiceBox choices = robot.lookup("#choiceBocArtikli").queryAs(ChoiceBox.class);
@@ -55,7 +55,7 @@ class ControllerTest {
     }
 
     @Test
-    void dodavanjeArtikala1(FxRobot robot){
+    void dodavanjeArtikala1Test(FxRobot robot){
         TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
         TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
         Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
@@ -67,7 +67,7 @@ class ControllerTest {
     }
 
     @Test
-    void dodavanjeArtikala2(FxRobot robot){
+    void dodavanjeArtikala2Test(FxRobot robot){
         TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
         TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
         Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
@@ -79,7 +79,7 @@ class ControllerTest {
     }
 
     @Test
-    void dodavanjeIstihArtikala(FxRobot robot){
+    void dodavanjeIstihArtikalaTest(FxRobot robot){
         TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
         TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
         Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
@@ -91,7 +91,7 @@ class ControllerTest {
     }
 
     @Test
-    void nedodavanjeArtikala(FxRobot robot){
+    void nedodavanjeArtikalaTest(FxRobot robot){
         TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
         TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
         Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
@@ -103,7 +103,7 @@ class ControllerTest {
     }
 
     @Test
-    void JedanArtikalPaDrugi(FxRobot robot){
+    void JedanArtikalPaDrugiTest(FxRobot robot){
         TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
         TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
         Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
@@ -121,7 +121,29 @@ class ControllerTest {
     }
 
     @Test
-    void JedanArtikalPaDrugiIsti(FxRobot robot){
+    void dodavanjeArtiklaIRacunaTest(FxRobot robot){
+        TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
+        TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
+        Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
+        robot.clickOn(area1);
+        robot.write("ABC,Proizvod,1\nDEF,Proizvod,1\nHFG,Proizvod,1\nABC,Proizvod,1");
+        robot.clickOn(dodajArt);
+        String inArea = area2.getText();
+        assertEquals("ABC, Proizvod, 1.0\nDEF, Proizvod, 1.0\nHFG, Proizvod, 1.0\n", inArea);
+        robot.clickOn("#racunTab");
+        robot.clickOn("#choiceBocArtikli");
+        robot.type(KeyCode.DOWN).type(KeyCode.ENTER);
+        robot.clickOn("#spinKol");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.type(KeyCode.DIGIT3);
+        robot.clickOn("#dodajBtn");
+        TextArea area3 = robot.lookup("#aktuelniRacun").queryAs(TextArea.class);
+        String area3Str = area3.getText();
+        assertEquals("DEF             3     3.00\nUKUPNO            3.00",area3Str);
+    }
+
+    @Test
+    void JedanArtikalPaDrugiIstiTest(FxRobot robot){
         TextArea area2 = robot.lookup("#unEditAble").queryAs(TextArea.class);
         TextArea area1 = robot.lookup("#areaZaArtikle").queryAs(TextArea.class);
         Button dodajArt = robot.lookup("#dodajAtrikleBtn").queryAs(Button.class);
@@ -137,4 +159,6 @@ class ControllerTest {
         String inArea2 = area2.getText();
         assertEquals("ABC, Proizvod, 1.0\n", inArea2);
     }
+
+
 }

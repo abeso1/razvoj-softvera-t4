@@ -3,8 +3,8 @@ package ba.unsa.etf.rs.tut4;
 import java.util.ArrayList;
 
 public class Racun {
-    private ArrayList<Artikal> artikli=new ArrayList<>();
-    private ArrayList<Integer> kolicine=new ArrayList<>();
+    private  ArrayList<Artikal> artikli=new ArrayList<>();
+    private  ArrayList<Integer> kolicine=new ArrayList<>();
 
     public Racun(){}
 
@@ -19,11 +19,11 @@ public class Racun {
         return suma;
     }
 
-    public void setArtikal(Artikal artikal)  {
+    private  void setArtikal(Artikal artikal)  {
         artikli.add(artikal);
     }
 
-    public void setKolicina(Integer kolicina) {
+    private void setKolicina(Integer kolicina) {
         kolicine.add(kolicina);
     }
 }
