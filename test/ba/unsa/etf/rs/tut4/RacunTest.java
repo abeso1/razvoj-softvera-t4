@@ -19,4 +19,5 @@ class RacunTest {
         Racun r = new Racun();
         assertEquals(0, r.ukupanIznos());
     }
+
 }

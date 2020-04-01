@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Racun {
     private ArrayList<Artikal> artikli=new ArrayList<>();
     private ArrayList<Integer> kolicine=new ArrayList<>();
-    private Artikal artikal;
-    private Integer kolicina;
+
     public Racun(){}
 
     public void dodajStavku(Artikal artikal, int i) {
@@ -20,16 +19,8 @@ public class Racun {
         return suma;
     }
 
-    public Artikal getArtikal() {
-        return artikal;
-    }
-
-    public void setArtikal(Artikal artikal) {
+    public void setArtikal(Artikal artikal)  {
         artikli.add(artikal);
-    }
-
-    public Integer getKolicina() {
-        return kolicina;
     }
 
     public void setKolicina(Integer kolicina) {

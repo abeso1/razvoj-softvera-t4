@@ -1,9 +1,7 @@
 package ba.unsa.etf.rs.tut4;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 import java.util.ArrayList;
 
@@ -14,12 +12,20 @@ public class Controller {
     public ChoiceBox choiceBocArtikli;
     public Spinner spinKol;
     public TextArea aktuelniRacun;
+    public Button dodajAtrikleBtn;
+    public Tab racunTab;
+    public Tab artikalTab;
+    public Button dodajBtn;
     private ArrayList<Artikal> lista = new ArrayList<>();
     private static ArrayList<String> listaispisivanja = new ArrayList<>();
     private static Double ukupno= Double.valueOf(0);
 
     public void dodajArtikle(ActionEvent actionEvent) {
         String artikli = areaZaArtikle.getText();
+        if (artikli.isBlank()) {
+            unEditAble.setText("");
+            return;
+        }
         String[] listArtikla = artikli.split("\n");
         for(int i=0; i<listArtikla.length; i++){
             String[] artikl = listArtikla[i].split(",");

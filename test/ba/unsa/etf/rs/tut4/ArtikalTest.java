@@ -1,6 +1,7 @@
 package ba.unsa.etf.rs.tut4;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,13 @@ class ArtikalTest {
     void getCijena() {
         Artikal a = new Artikal("ABC", "Proizvod", 100);
         assertEquals(100, a.getCijena());
+    }
+
+    @Test
+    void tooString() {
+        Artikal a = new Artikal();
+        a = new Artikal("ABC", "Proizvod", 100);
+        assertEquals("ABC, Proizvod, 100.0", Artikal.toString(a));//toString ispisuje 100.0 jer je cijena artikla double
     }
 
     @Test
